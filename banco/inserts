@@ -1,0 +1,108 @@
+-- -----------------------------------------------------
+-- Inserindo pessoas (pacientes e cuidadores)
+-- -----------------------------------------------------
+INSERT INTO banco.pessoa (pessoa_nome, pessoa_email, pessoa_senha, pessoa_tipo, pessoa_data_nascimento, pessoa_peso, pessoa_altura) VALUES
+('João Silva', 'joao@email.com', 'senha123', 'Paciente', '1955-08-20', 70, 1.70),
+('Maria Oliveira', 'maria@email.com', 'senha123', 'Paciente', '1958-02-15', 65, 1.60),
+('Carlos Souza', 'carlos@email.com', 'senha123', 'Paciente', '1948-12-01', 80, 1.75),
+('Ana Paula', 'ana@email.com', 'senha123', 'Cuidador', '1980-03-10', 60, 1.65),
+('Ricardo Lima', 'ricardo@email.com', 'senha123', 'Cuidador', '1975-07-22', 75, 1.80);
+
+-- -----------------------------------------------------
+-- Inserindo cuidados (vinculando cuidador e paciente)
+-- -----------------------------------------------------
+INSERT INTO banco.cuidado (cuidado_nome, cuidado_data_nas, cuidado_foto, fk_pessoa_cuidador, fk_pessoa_paciente) VALUES
+('Cuidado João', '1955-08-20', 'foto_joao.jpg', 4, 1),
+('Cuidado Maria', '1958-02-15', 'foto_maria.jpg', 4, 2),
+('Cuidado Carlos', '1948-12-01', 'foto_carlos.jpg', 5, 3);
+
+-- -----------------------------------------------------
+-- Inserindo medicamentos
+-- -----------------------------------------------------
+INSERT INTO `banco`.`medicamento`
+(
+    `medicamento_nome`,
+    `medicamento_foto`,
+    `medicamento_laboratorio`,
+    `medicamento_categoria`,
+    `medicamento_obervacao`
+)
+VALUES
+-- Dor e febre
+('Dipirona', 'dipirona.jpg', 'Genérico', 'Dor e febre', 'Analgésico e antitérmico. Usar conforme orientação da bula ou profissional de saúde.'),
+('Paracetamol', 'paracetamol.jpg', 'Genérico', 'Dor e febre', 'Analgésico e antitérmico. Atenção à dose máxima diária e ao uso concomitante de outros medicamentos com paracetamol.'),
+('Ácido acetilsalicílico', 'aas.jpg', 'Genérico', 'Dor e inflamação', 'Analgésico e anti-inflamatório. Algumas apresentações possuem indicação cardiovascular específica.'),
+
+-- Dor e inflamação
+('Aceclofenaco', 'aceclofenaco.jpg', 'Genérico', 'Dor e inflamação', 'Anti-inflamatório não esteroidal. Deve ser utilizado conforme orientação profissional.'),
+('Ciclobenzaprina', 'ciclobenzaprina.jpg', 'Genérico', 'Dor muscular', 'Relaxante muscular utilizado em situações específicas de espasmo muscular.'),
+('Butilbrometo de escopolamina + Dipirona', 'butilbrometo-escopolamina-dipirona.jpg', 'Genérico', 'Cólicas e dor', 'Combinação com ação antiespasmódica e analgésica, utilizada para cólicas e dores específicas.'),
+('Dipirona + Orfenadrina + Cafeína', 'dipirona-orfenadrina-cafeina.jpg', 'Dorflex', 'Dor', 'Combinação analgésica e relaxante muscular utilizada para dores musculares e cefaleias.'),
+
+-- Alergia
+('Fexofenadina', 'fexofenadina.jpg', 'Genérico', 'Alergia', 'Antialérgico utilizado principalmente em rinite alérgica e urticária.'),
+('Loratadina', 'loratadina.jpg', 'Genérico', 'Alergia', 'Antialérgico utilizado para sintomas de rinite e outras manifestações alérgicas.'),
+('Cetirizina', 'cetirizina.jpg', 'Genérico', 'Alergia', 'Antialérgico utilizado em rinite alérgica, urticária e outras condições alérgicas.'),
+('Fluticasona', 'fluticasona.jpg', 'Genérico', 'Alergia nasal', 'Corticoide nasal utilizado principalmente no controle de sintomas de rinite.'),
+
+-- Tosse e secreções
+('Acetilcisteína', 'acetilcisteina.jpg', 'Genérico', 'Tosse e secreções', 'Mucolítico que auxilia na fluidificação das secreções respiratórias.'),
+('Ambroxol', 'ambroxol.jpg', 'Genérico', 'Tosse e secreções', 'Expectorante/mucolítico utilizado para auxiliar na eliminação de secreções respiratórias.'),
+
+-- Estômago
+('Omeprazol', 'omeprazol.jpg', 'Genérico', 'Estômago e refluxo', 'Redutor da produção de ácido gástrico, utilizado em condições específicas de acidez e refluxo.'),
+('Hidróxido de alumínio + Hidróxido de magnésio', 'hidroxido-aluminio-magnesio.jpg', 'Genérico', 'Azia e acidez', 'Antiácido utilizado para alívio de sintomas relacionados à acidez gástrica.'),
+
+-- Náusea e enjoo
+('Dimenidrinato', 'dimenidrinato.jpg', 'Genérico', 'Náusea e enjoo', 'Utilizado para prevenção e tratamento de náuseas, vômitos e enjoo em situações específicas.'),
+('Metoclopramida', 'metoclopramida.jpg', 'Genérico', 'Náusea e vômito', 'Medicamento utilizado em situações específicas de náuseas e vômitos. Pode causar efeitos adversos neurológicos.'),
+
+-- Intestino
+('Bisacodil', 'bisacodil.jpg', 'Genérico', 'Intestino', 'Laxante utilizado para tratamento de constipação em situações específicas.'),
+
+-- Verminoses
+('Albendazol', 'albendazol.jpg', 'Genérico', 'Antiparasitário', 'Antiparasitário utilizado no tratamento de determinadas verminoses.'),
+
+-- Antibióticos
+('Amoxicilina', 'amoxicilina.jpg', 'Genérico', 'Antibiótico', 'Antibiótico utilizado no tratamento de determinadas infecções bacterianas. Uso sob prescrição e orientação profissional.'),
+('Amoxicilina + Clavulanato', 'amoxicilina-clavulanato.jpg', 'Genérico', 'Antibiótico', 'Antibiótico utilizado para determinadas infecções bacterianas. Uso sob prescrição e orientação profissional.'),
+
+-- Antiviral
+('Aciclovir', 'aciclovir.jpg', 'Genérico', 'Antiviral', 'Antiviral utilizado no tratamento de infecções causadas por determinados vírus, como herpes.'),
+
+-- Antifúngico
+('Cetoconazol', 'cetoconazol.jpg', 'Genérico', 'Antifúngico', 'Antifúngico utilizado no tratamento de determinadas infecções causadas por fungos.'),
+
+-- Hipertensão
+('Losartana', 'losartana.jpg', 'Genérico', 'Hipertensão', 'Medicamento utilizado principalmente no tratamento da hipertensão e em algumas condições cardiovasculares.'),
+('Anlodipino', 'anlodipino.jpg', 'Genérico', 'Hipertensão', 'Medicamento utilizado no tratamento da hipertensão e da angina em situações específicas.'),
+('Hidroclorotiazida', 'hidroclorotiazida.jpg', 'Genérico', 'Hipertensão', 'Diurético utilizado principalmente no tratamento da hipertensão e de determinados edemas.'),
+
+-- Diabetes
+('Metformina', 'metformina.jpg', 'Genérico', 'Diabetes', 'Medicamento utilizado principalmente no tratamento do diabetes mellitus tipo 2.'),
+
+-- Tireoide
+('Levotiroxina', 'levotiroxina.jpg', 'Genérico', 'Tireoide', 'Hormônio utilizado para reposição hormonal em casos de hipotireoidismo.'),
+
+-- Colesterol
+('Sinvastatina', 'sinvastatina.jpg', 'Genérico', 'Colesterol', 'Medicamento utilizado para redução do colesterol e do risco cardiovascular em pacientes indicados.'),
+('Atorvastatina', 'atorvastatina.jpg', 'Genérico', 'Colesterol', 'Medicamento utilizado para redução do colesterol e prevenção de eventos cardiovasculares em pacientes indicados.'),
+
+-- Asma e vias respiratórias
+('Salbutamol', 'salbutamol.jpg', 'Genérico', 'Asma e broncoespasmo', 'Broncodilatador utilizado para alívio de broncoespasmo em condições respiratórias específicas.'),
+('Budesonida', 'budesonida.jpg', 'Genérico', 'Asma e rinite', 'Corticoide utilizado no controle da inflamação das vias respiratórias em condições específicas.'),
+
+-- Pele
+('Adapaleno', 'adapaleno.jpg', 'Genérico', 'Pele e acne', 'Medicamento tópico utilizado principalmente no tratamento da acne.'),
+('Peróxido de benzoíla', 'peroxido-benzoila.jpg', 'Genérico', 'Pele e acne', 'Medicamento tópico utilizado no tratamento da acne.'),
+
+-- Olhos
+('Lubrificante ocular', 'lubrificante-ocular.jpg', 'Genérico', 'Olhos', 'Utilizado para aliviar sintomas relacionados ao ressecamento ocular.');
+-- -----------------------------------------------------
+-- Inserindo prescrições (vinculando medicamento e cuidado)
+-- -----------------------------------------------------
+INSERT INTO banco.prescricao (medicamento_medicamento_id, cuidado_cuidado_id, cuidado_fk_pessoa_pessoa_id, cuidado_fk_pessoa_cuidador, prescricao_frequencia, prescricao_dosagem, prescricao_horario_primeira_dose, prescricao_data_inicio, prescricao_observacao) VALUES
+(1, 1, 1, 4, 3, 500, '2026-05-11 08:00:00', '2026-05-11', 'Tomar após café da manhã'),
+(2, 1, 1, 4, 2, 400, '2026-05-11 12:00:00', '2026-05-11', 'Tomar após almoço'),
+(3, 2, 2, 4, 3, 500, '2026-05-11 08:00:00', '2026-05-11', 'Completar o ciclo'),
+(4, 3, 3, 5, 1, 20, '2026-05-11 09:00:00', '2026-05-11', 'Tomar pela manhã');
