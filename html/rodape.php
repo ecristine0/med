@@ -1,7 +1,7 @@
 <div class="rodape">
     <nav class="links-footer" aria-label="Links do rodapé">
         <a href="index.php">Início</a>
-        <a href="medicamentos.php">Medicamentos</a>
+        <a href="cadastrar_med.php">Medicamentos</a>
         <a href="contato.php">Contato</a>
         <a href="sobre.php">Sobre</a>
     </nav>
