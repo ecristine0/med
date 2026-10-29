@@ -4,7 +4,6 @@ require_once "conexao.php";
 //login
 function Login($conexao, $email, $senha)
 {
-
     $sql = "SELECT * FROM pessoa WHERE pessoa_email = ? AND pessoa_senha = ?";
 
     $stmt = $conexao->prepare($sql);
@@ -40,20 +39,38 @@ function listarmedicamento($conexao)
     return $conexao->query("SELECT * FROM banco.medicamento");
 }
 
+
 function inserirmedicamento($conexao, $nome, $laboratorio, $categoria, $observacao, $arquivoImagem)
 {
-    $sql = "INSERT INTO banco.medicamento (medicamento_nome, medicamento_laboratorio, medicamento_categoria, medicamento_observacao, arquivoImagem) values (?, ?, ?, ?, ?)";
+    $caminhoImagem = uploadCapa($arquivoImagem);
+    if (!$caminhoImagem) {
+        return false;
+    }
+    $sql = "INSERT INTO banco.medicamento
+            (medicamento_nome, medicamento_foto, medicamento_laboratorio,
+             medicamento_categoria, medicamento_obervacao)
+            VALUES (?, ?, ?, ?, ?)";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("sssss", $nome, $laboratorio, $categoria, $observacao, $arquivoImagem);
+    if (!$stmt) {
+        return false;
+    }
+    $stmt->bind_param(
+        "sssss",
+        $nome,
+        $caminhoImagem,
+        $laboratorio,
+        $categoria,
+        $observacao
+    );
     return $stmt->execute();
 }
 
 function buscarmedicamentoid($conexao, $id)
 {
-$sql = "SELECT * FROM banco.medicamento WHERE medicamento_id=?";
-$stmt = $conexao->prepare($sql);
- $stmt->bind_param("i", $id);
-$stmt->execute();
+    $sql = "SELECT * FROM banco.medicamento WHERE medicamento_id=?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
 
     return $stmt->get_result();
 }
@@ -158,10 +175,11 @@ function listarcuidador($conexao)
 }
 
 
-function inserircuidador($conexao, $nome, $data_nas, $arquivoImagem){
+function inserircuidador($conexao, $nome, $data_nas, $arquivoImagem)
+{
     $caminhoImagem = uploadCapa($arquivoImagem);
 
-    if(!$caminhoImagem){
+    if (!$caminhoImagem) {
         return false;
     }
 
@@ -171,28 +189,29 @@ function inserircuidador($conexao, $nome, $data_nas, $arquivoImagem){
     return $stmt->execute();
 }
 //foto
-   function uploadCapa ($arquivo){
-        $diretorio = 'foto/';
-        $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
-        $permitidas = ['jpg', 'jpeg', 'png'];
+function uploadCapa($arquivo)
+{
+    $diretorio = 'foto/';
+    $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
+    $permitidas = ['jpg', 'jpeg', 'png'];
 
-        if(!in_array($extensao, $permitidas)){ 
-            return false;
-        }
-
-        if($arquivo['size']> 1024 * 1024 * 2){ // permite até 2MB
-            return false;
-        }
-
-        $nomeArquivo = uniqid() . "_" . $arquivo['name'];
-        $caminho = $diretorio . $nomeArquivo; // uploads/capas/13516516has5_arvore.png
-
-        if (move_uploaded_file($arquivo['tmp_name'], $caminho)){
-            return $caminho;
-        }
-
+    if (!in_array($extensao, $permitidas)) {
         return false;
     }
+
+    if ($arquivo['size'] > 1024 * 1024 * 2) { // permite até 2MB
+        return false;
+    }
+
+    $nomeArquivo = uniqid() . "_" . $arquivo['name'];
+    $caminho = $diretorio . $nomeArquivo; // uploads/capas/13516516has5_arvore.png
+
+    if (move_uploaded_file($arquivo['tmp_name'], $caminho)) {
+        return $caminho;
+    }
+
+    return false;
+}
 
 function buscarcuidador($conexao, $id)
 {
@@ -248,20 +267,23 @@ function deletarcuidado($conexao, $id)
 
 //prescrição
 
-function atualizaprescricao($conexao, $id, $frequencia, $dosagem, $horario_primeira_dose, $data_inicio, $observacao){
-$sql = "UPDATE banco.prescricao SET prescricao_frequencia = ?, prescricao_dosagem = ?, prescricao_horario_primeira_dose = ?, prescricao_data_inicio = ?, prescricao_observacao = ? WHERE prescricao_id=?";
-$stmt = $conexao-> prepare($sql);
-$stmt ->bind_param("iidsss", $id, $frequencia, $dosagem, $horario_primeira_dose, $data_inicio, $observacao);
-return $stmt->execute();
+function atualizaprescricao($conexao, $id, $frequencia, $dosagem, $horario_primeira_dose, $data_inicio, $observacao)
+{
+    $sql = "UPDATE banco.prescricao SET prescricao_frequencia = ?, prescricao_dosagem = ?, prescricao_horario_primeira_dose = ?, prescricao_data_inicio = ?, prescricao_observacao = ? WHERE prescricao_id=?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("iidsss", $id, $frequencia, $dosagem, $horario_primeira_dose, $data_inicio, $observacao);
+    return $stmt->execute();
 }
-function deletarprescricao($conexao, $id){
-$sql= "DELETE FROM banco.prescricao WHERE prescricao_id = ?";
-$stmt = $conexao->prepare($sql);
-$stmt-> bind_param("i", $id);
+function deletarprescricao($conexao, $id)
+{
+    $sql = "DELETE FROM banco.prescricao WHERE prescricao_id = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id);
 
-return $stmt->execute();
- }
+    return $stmt->execute();
+}
 
-function listarprescricao($conexao){
-return $conexao-> query("SELECT * FROM banco.prescricao");
-} 
+function listarprescricao($conexao)
+{
+    return $conexao->query("SELECT * FROM banco.prescricao");
+}

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `banco`.`pessoa` (
   `pessoa_id` INT NOT NULL AUTO_INCREMENT,
   `pessoa_nome` VARCHAR(255) NOT NULL,
   `pessoa_email` VARCHAR(255) NOT NULL,
-  `pessoa_senha` VARCHAR(45) NOT NULL,
+  `pessoa_senha` VARCHAR(255) NOT NULL,
   `pessoa_tipo` VARCHAR(255) NOT NULL,
   `pessoa_data_nascimento` DATE NOT NULL,
   `pessoa_peso` FLOAT NOT NULL,

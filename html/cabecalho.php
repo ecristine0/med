@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="header">
+<?php
+$logado = isset($_SESSION['pessoa']);
+?>
+
+<header class="header">
     <div class="container">
 
         <div class="logo">
@@ -16,11 +11,14 @@
         </div>
 
         <nav class="menu">
-            <a href="#" class="btn-home">Início</a>
-            <a href="#" class="btn-login">Entrar</a>
+            <a href="index.php" class="btn-home">Início</a>
+
+            <?php if ($logado): ?>
+                <a href="logout.php" class="btn-login">Sair</a>
+            <?php else: ?>
+                <a href="login.php" class="btn-login">Entrar</a>
+            <?php endif; ?>
         </nav>
 
     </div>
 </header>
-</body>
-</html>

@@ -1,39 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar</title>
+    <title>Cadastro - MedTime</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form action="salvar_cadastro.php" method="post">
+    <main class="cadastro-page">
+        <section class="cadastro-container">
 
-    <h2>Cadastro</h2>
+            <header class="cadastro-header">
+                <span class="cadastro-etiqueta">MEDTIME</span>
+                <h1>Crie sua conta</h1>
+                <p>Cuide da sua saúde com mais facilidade. Preencha seus dados para começar.</p>
+            </header>
 
-    <input type="text" name="pessoa_nome" required placeholder="Nome"> <br><br>
+            <form action="salvar_cadastro.php" method="POST" class="cadastro-form" id="formCadastro">
 
-    <input type="email" name="pessoa_email" required placeholder="email@exemplo.com"> <br><br>
+                <div class="cadastro-form-group">
+                    <label for="pessoa_nome">Nome completo</label>
+                    <input
+                        type="text"
+                        id="pessoa_nome"
+                        name="pessoa_nome"
+                        placeholder="Ex.: Maria da Silva"
+                        autocomplete="name"
+                        required>
+                </div>
 
-    <input type="password" name="pessoa_senha" required placeholder="Senha"> <br><br>
+                <div class="cadastro-form-group">
+                    <label for="pessoa_email">E-mail</label>
+                    <input
+                        type="email"
+                        id="pessoa_email"
+                        name="pessoa_email"
+                        placeholder="Ex.: maria@email.com"
+                        autocomplete="email"
+                        required>
+                </div>
 
-    <input type="text" name="pessoa_tipo" required placeholder="Tipo (ex: aluno, professor)"> <br><br>
+                <div class="cadastro-form-group cadastro-senha">
+                    <label for="pessoa_senha">Senha</label>
+                    <input
+                        type="password"
+                        id="pessoa_senha"
+                        name="pessoa_senha"
+                        placeholder="Crie uma senha"
+                        autocomplete="new-password"
+                        required>
 
-    <input type="date" name="pessoa_data_nascimento" required> <br><br>
+                    <ul class="regras-senha">
+                        <li id="regra_quantidade" class="invalido">No mínimo 8 caracteres</li>
+                        <li id="regra_maiuscula" class="invalido">Pelo menos uma letra maiúscula</li>
+                    </ul>
+                </div>
 
-    <input type="number" step="0.1" name="pessoa_peso" required placeholder="Peso (kg)"> <br><br>
+                <div class="cadastro-form-group">
+                    <label for="pessoa_tipo">Tipo de usuário</label>
+                    <select id="pessoa_tipo" name="pessoa_tipo" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="cuidador">Cuidador</option>
+                        <option value="paciente">Paciente</option>
+                    </select>
+                </div>
 
-    <input type="number" step="0.01" name="pessoa_altura" required placeholder="Altura (m)"> <br><br>
+                <div class="cadastro-form-group">
+                    <label for="pessoa_data_nascimento">Data de nascimento</label>
+                    <input
+                        type="date"
+                        id="pessoa_data_nascimento"
+                        name="pessoa_data_nascimento"
+                        autocomplete="bday"
+                        required>
+                </div>
 
-    <input type="submit" value="Cadastrar-se"> <br><br>
+                <div class="cadastro-form-group">
+                    <label for="pessoa_peso">Peso <span>(kg)</span></label>
+                    <input
+                        type="number"
+                        id="pessoa_peso"
+                        name="pessoa_peso"
+                        placeholder="Ex.: 70.5"
+                        step="0.1"
+                        min="0"
+                        required>
+                </div>
 
-    <p>
-        Já tem uma conta? <a href="login.php">Entre aqui!</a>
-    </p>
+                <div class="cadastro-form-group">
+                    <label for="pessoa_altura">Altura <span>(m)</span></label>
+                    <input
+                        type="number"
+                        id="pessoa_altura"
+                        name="pessoa_altura"
+                        placeholder="Ex.: 1.70"
+                        step="0.01"
+                        min="0"
+                        required>
+                </div>
 
-</form>
+                <button type="submit" class="cadastro-button">
+                    Criar minha conta
+                </button>
 
+            </form>
+
+            <div class="cadastro-footer">
+                <p>Já possui uma conta? <a href="login.php">Entre aqui</a></p>
+                <a href="index.php" class="cadastro-back-link">Voltar para o início</a>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        const campoSenha = document.getElementById('pessoa_senha');
+        const regraQuantidade = document.getElementById('regra_quantidade');
+        const regraMaiuscula = document.getElementById('regra_maiuscula');
+        const formulario = document.getElementById('formCadastro');
+
+        function validarRegra(valor, regra) {
+            regra.classList.toggle('valido', valor);
+            regra.classList.toggle('invalido', !valor);
+        }
+
+        function validarSenha() {
+            const quantidade = campoSenha.value.length >= 8;
+            const maiuscula = /[A-Z]/.test(campoSenha.value);
+
+            validarRegra(quantidade, regraQuantidade);
+            validarRegra(maiuscula, regraMaiuscula);
+
+            return quantidade && maiuscula;
+        }
+
+        campoSenha.addEventListener('input', validarSenha);
+
+        formulario.addEventListener('submit', function(evento) {
+            if (!validarSenha()) {
+                evento.preventDefault();
+                campoSenha.focus();
+            }
+        });
+    </script>
 </body>
 
 </html>
