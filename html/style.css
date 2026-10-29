@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
+/* CONFIGURAÇÕES GERAIS
+   Aplicadas ao site inteiro: remove margens e espaçamentos padrão do navegador,
+   define o modelo de dimensionamento e configura a fonte e as cores principais. */
 * {
     margin: 0;
     padding: 0;
@@ -12,13 +15,17 @@ body {
     color: #222;
 }
 
+/* CONTAINER GERAL
+   Classe usada para alinhar e dar espaçamento lateral ao conteúdo das páginas. */
 .container {
     width: 100%;
     padding-left: 4vw;
     padding-right: 4vw;
 }
 
-/* HEADER */
+/* CABEÇALHO DO SITE
+   Relacionado ao cabeçalho compartilhado pelas páginas que incluem cabecalho.php.
+   Mantém a barra no topo durante a rolagem e separa o cabeçalho do conteúdo. */
 
 /* HEADER */
 
@@ -46,7 +53,8 @@ header {
 }
 
 
-/* LOGO */
+/* LOGO
+   Estiliza a imagem e o nome MedTime que aparecem no cabeçalho. */
 
 .logo {
     display: flex;
@@ -69,7 +77,8 @@ header {
 }
 
 
-/* MENU */
+/* MENU
+   Organiza os links de navegação do cabeçalho e define a cor ao passar o mouse. */
 
 .header .menu {
     display: flex;
@@ -88,7 +97,8 @@ header {
 }
 
 
-/* BOTÕES */
+/* BOTÕES DO CABEÇALHO
+   Define a aparência dos links de início e de acesso/login. */
 
 .btn-home,
 .btn-login {
@@ -107,7 +117,8 @@ header {
     background: #d9142d;
 }
 
-/* HERO */
+/* PÁGINA INICIAL — SEÇÃO PRINCIPAL (HERO)
+   Estiliza o bloco de apresentação da página inicial, com texto, botão e imagem. */
 
 .hero {
     padding: 6vw 0;
@@ -176,7 +187,8 @@ header {
     max-width: 31.25rem;
 }
 
-/* ESTATÍSTICAS */
+/* ESTATÍSTICAS DA PÁGINA INICIAL
+   Organiza os números e informações resumidas exibidos abaixo da seção principal. */
 
 .estatisticas {
     padding: 2.5rem 0;
@@ -200,7 +212,8 @@ header {
     color: #666;
 }
 
-/* FUNCIONALIDADES */
+/* FUNCIONALIDADES DA PÁGINA INICIAL
+   Organiza a seção e os cartões que apresentam os recursos do MedTime. */
 
 .funcionalidades {
     padding: 5rem 0;
@@ -260,7 +273,8 @@ header {
     line-height: 1.6;
 }
 
-/* CTA */
+/* CTA — CHAMADA PARA AÇÃO
+   É a faixa de destaque que convida o visitante a se cadastrar ou continuar. */
 
 .cta {
     background: #ef1835;
@@ -291,6 +305,9 @@ header {
     text-decoration: none;
     font-weight: 700;
 }
+
+/* RODAPÉ DO SITE
+   Relacionado ao rodape.php: links informativos, aviso e direitos autorais. */
 
 /* FOOTER */
 footer {
@@ -352,6 +369,8 @@ footer>.container {
     line-height: 1.6;
 }
 
+/* AJUSTES DO RODAPÉ EM TELAS PEQUENAS
+   Reduz espaçamentos e tamanhos para o rodapé caber melhor em celulares. */
 @media (max-width: 30rem) {
     footer>.container {
         padding-top: 2rem;
@@ -372,6 +391,10 @@ footer>.container {
     }
 }
 
+
+/* PÁGINA DE LOGIN
+   Classes usadas na tela de entrada da conta: painel, título, formulário,
+   campos, botão de acesso e mensagem de erro. */
 
 /* LOGIN */
 
@@ -465,6 +488,10 @@ footer>.container {
     font-weight: 600;
 }
 
+/* RESPONSIVIDADE GERAL
+   As regras abaixo ajustam o layout da página inicial, cabeçalho e telas de
+   acesso em diferentes larguras de tela. A estrutura original foi preservada. */
+
 /* RESPONSIVO */
 
 @media (max-width: 48rem) {
@@ -536,6 +563,10 @@ footer>.container {
     }
 }
 
+/* PÁGINA DE CADASTRO DE USUÁRIO
+   Define o cartão principal, cabeçalho, campos do formulário, regras de senha,
+   botão de cadastro e links do rodapé da tela. */
+
 /* ========================================
    CADASTRO MEDTIME
 ======================================== */
@@ -588,7 +619,9 @@ footer>.container {
     line-height: 1.6;
 }
 
-/* FORMULÁRIO */
+/* FORMULÁRIO DE CADASTRO
+   Coloca os campos em duas colunas em telas maiores; os campos individuais
+   ficam organizados verticalmente com rótulos e caixas de entrada. */
 
 .cadastro-form {
     display: grid;
@@ -641,7 +674,9 @@ footer>.container {
     box-shadow: 0 0 0 0.2rem rgba(239, 24, 53, 0.1);
 }
 
-/* SENHA */
+/* CAMPO DE SENHA
+   Faz a área de senha ocupar toda a largura do formulário e diferencia
+   visualmente as regras de senha válidas e inválidas. */
 
 .cadastro-senha {
     grid-column: 1 / -1;
@@ -663,7 +698,8 @@ footer>.container {
     font-weight: 600;
 }
 
-/* BOTÃO */
+/* BOTÃO DE CADASTRO
+   Estiliza o botão principal e o efeito visual ao passar o mouse. */
 
 .cadastro-button {
     grid-column: 1 / -1;
@@ -687,7 +723,8 @@ footer>.container {
     transform: translateY(-0.0625rem);
 }
 
-/* RODAPÉ E LINKS */
+/* RODAPÉ E LINKS DO CADASTRO
+   Organiza o link para entrar em uma conta existente e o link de retorno. */
 
 .cadastro-container .cadastro-footer {
     display: flex;
@@ -733,7 +770,9 @@ footer>.container {
     text-decoration: underline;
 }
 
-/* RESPONSIVIDADE DO CADASTRO */
+/* RESPONSIVIDADE DO CADASTRO
+   Em telas menores, transforma o formulário em uma coluna e reduz os
+   espaçamentos para que os campos não fiquem apertados. */
 
 @media (max-width: 40rem) {
     .cadastro-page {
@@ -760,6 +799,10 @@ footer>.container {
         grid-column: auto;
     }
 }
+
+/* PÁGINA DE CADASTRO DE MEDICAMENTOS
+   Relacionada ao formulário para adicionar um medicamento, incluindo campos,
+   seleção de arquivo, botão, link para voltar e mensagens de resultado. */
 
 /* CADASTRO DE MEDICAMENTOS */
 .med-cadastro-page {
@@ -906,6 +949,8 @@ footer>.container {
     color: #b42318;
 }
 
+/* RESPONSIVIDADE DO CADASTRO DE MEDICAMENTOS
+   Ajusta o painel e os espaços nas telas estreitas. */
 @media (max-width: 30rem) {
     .med-cadastro-page {
         padding: 1.5rem 0.85rem;
@@ -915,6 +960,10 @@ footer>.container {
         padding: 1.4rem 1rem;
     }
 }
+
+/* PÁGINA SOBRE NÓS
+   Estiliza o cartão de apresentação do projeto, o texto institucional,
+   o bloco de destaque e os botões de navegação. */
 
 /* SOBRE NÓS */
 
@@ -1052,6 +1101,8 @@ footer>.container {
     transform: translateY(-2px);
 }
 
+/* RESPONSIVIDADE DA PÁGINA SOBRE NÓS
+   Empilha os botões e ajusta o conteúdo para telas de celular. */
 @media (max-width: 30rem) {
     .sobre-page {
         padding: 1.5rem 0.85rem;
@@ -1086,6 +1137,10 @@ footer>.container {
         width: 100%;
     }
 }
+
+/* SEÇÃO DE ACESSO AOS MEDICAMENTOS NA PÁGINA INICIAL
+   Organiza o texto de apresentação e os botões que levam à área de medicamentos,
+   além do quadro ilustrativo ao lado. */
 
 /* ACESSO AOS MEDICAMENTOS NA PÁGINA INICIAL */
 
@@ -1205,6 +1260,10 @@ footer>.container {
     font-weight: 600;
     line-height: 1.6;
 }
+
+/* LISTAGEM DE MEDICAMENTOS
+   Estiliza a página que apresenta os medicamentos cadastrados: resumo da lista,
+   botão de adicionar, cartões, imagens, informações e estado de lista vazia. */
 
 /* LISTAGEM DE MEDICAMENTOS */
 
@@ -1449,6 +1508,10 @@ footer>.container {
     color: #ef1835;
     text-decoration: underline;
 }
+
+/* RESPONSIVIDADE DA LISTAGEM E DA SEÇÃO DE ACESSO
+   Em telas médias, mostra dois cartões por linha; em celulares, coloca os
+   cartões em uma coluna e empilha os botões e os elementos do resumo. */
 
 @media (max-width: 56rem) {
     .lista-med-grid {
