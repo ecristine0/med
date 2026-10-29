@@ -57,13 +57,10 @@ if (
     !in_array($tipo, ["cuidador", "paciente"], true) ||
     !is_string($senha) ||
     strlen($senha) < 8 ||
-    !preg_match('/[A-Z]/', $senha) ||
-    !preg_match('/[0-9]/', $senha) ||
-    !preg_match('/[!@#$%^&*()\-+]/', $senha)
+    !preg_match('/[A-Z]/', $senha)
 ) {
     mensagem("Verifique os dados e os requisitos da senha.");
 }
-
 if (
     !is_string($data) ||
     !preg_match('/^\d{4}-\d{2}-\d{2}$/', $data)

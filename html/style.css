@@ -1086,3 +1086,424 @@ footer>.container {
         width: 100%;
     }
 }
+
+/* ACESSO AOS MEDICAMENTOS NA PÁGINA INICIAL */
+
+.acesso-medicamentos {
+    padding: 4.5rem 0;
+    background: #fafafa;
+}
+
+.acesso-medicamentos>.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.acesso-med-texto {
+    flex: 1;
+    max-width: 42rem;
+}
+
+.acesso-med-etiqueta,
+.lista-med-etiqueta {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: #ef1835;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.acesso-med-texto h2 {
+    margin-bottom: 1rem;
+    color: #222;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.2;
+}
+
+.acesso-med-texto>p {
+    max-width: 36rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.acesso-med-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+}
+
+.acesso-med-principal,
+.acesso-med-secundario {
+    display: inline-block;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid #ef1835;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.acesso-med-principal {
+    color: #fff;
+    background: #ef1835;
+}
+
+.acesso-med-principal:hover {
+    background: #d9142d;
+    transform: translateY(-2px);
+}
+
+.acesso-med-secundario {
+    color: #ef1835;
+    background: #fff;
+}
+
+.acesso-med-secundario:hover {
+    color: #fff;
+    background: #ef1835;
+}
+
+.acesso-med-icone {
+    width: 17rem;
+    min-height: 14rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #f5d8dd;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 0.6rem 1.8rem #0001;
+    text-align: center;
+}
+
+.acesso-med-icone span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1.25rem;
+    background: #fff0f2;
+    color: #ef1835;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.acesso-med-icone p {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* LISTAGEM DE MEDICAMENTOS */
+
+.lista-med-page {
+    min-height: 75vh;
+    padding: 3.5rem 1.25rem;
+    background: #fafafa;
+}
+
+.lista-med-container {
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.lista-med-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.lista-med-header h1 {
+    margin-bottom: 0.75rem;
+    color: #222;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+}
+
+.lista-med-header h1 span {
+    color: #ef1835;
+}
+
+.lista-med-header>p {
+    max-width: 36rem;
+    margin: 0 auto;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.lista-med-resumo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #ededf0;
+    border-radius: 0.85rem;
+    background: #fff;
+}
+
+.lista-med-resumo>div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.lista-med-numero {
+    color: #ef1835;
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.lista-med-resumo-texto {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.lista-med-adicionar {
+    display: inline-block;
+    padding: 0.8rem 1.1rem;
+    border: 1px solid #ef1835;
+    border-radius: 0.5rem;
+    background: #ef1835;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lista-med-adicionar:hover {
+    background: #d9142d;
+    transform: translateY(-1px);
+}
+
+.lista-med-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.lista-med-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #ededf0;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 0.4rem 1.3rem #0000000a;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lista-med-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.7rem 1.6rem #00000012;
+}
+
+.lista-med-imagem {
+    height: 12rem;
+    overflow: hidden;
+    background: #fff5f6;
+}
+
+.lista-med-imagem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lista-med-sem-imagem {
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #fff5f6;
+}
+
+.lista-med-sem-imagem span {
+    color: #ef1835;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.lista-med-sem-imagem p {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.lista-med-card-conteudo {
+    padding: 1.4rem;
+}
+
+.lista-med-categoria {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    overflow-wrap: anywhere;
+    border-radius: 2rem;
+    background: #fff0f2;
+    color: #d9142d;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.lista-med-card-conteudo h2 {
+    margin-bottom: 1.25rem;
+    overflow-wrap: anywhere;
+    color: #25252b;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.lista-med-informacao {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.lista-med-informacao>span {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #777;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.lista-med-informacao p {
+    color: #52525b;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.lista-med-vazio {
+    padding: 3.5rem 1.5rem;
+    border: 1px solid #ededf0;
+    border-radius: 1rem;
+    background: #fff;
+    text-align: center;
+}
+
+.lista-med-vazio-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto 1.25rem;
+    border-radius: 1rem;
+    background: #fff0f2;
+    color: #ef1835;
+    font-size: 2.5rem;
+}
+
+.lista-med-vazio h2 {
+    margin-bottom: 0.75rem;
+    color: #25252b;
+    font-size: 1.35rem;
+}
+
+.lista-med-vazio>p {
+    max-width: 30rem;
+    margin: 0 auto 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.lista-med-voltar {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.lista-med-voltar a {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.lista-med-voltar a:hover {
+    color: #ef1835;
+    text-decoration: underline;
+}
+
+@media (max-width: 56rem) {
+    .lista-med-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .acesso-med-icone {
+        width: 14rem;
+    }
+}
+
+@media (max-width: 40rem) {
+    .acesso-medicamentos {
+        padding: 3rem 0;
+    }
+
+    .acesso-medicamentos>.container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2rem;
+    }
+
+    .acesso-med-icone {
+        width: 100%;
+        min-height: 10rem;
+    }
+
+    .acesso-med-acoes {
+        flex-direction: column;
+    }
+
+    .acesso-med-principal,
+    .acesso-med-secundario {
+        text-align: center;
+    }
+
+    .lista-med-page {
+        padding: 2rem 0.85rem;
+    }
+
+    .lista-med-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lista-med-resumo {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .lista-med-resumo>div {
+        justify-content: center;
+    }
+
+    .lista-med-adicionar {
+        width: 100%;
+    }
+}

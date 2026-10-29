@@ -105,7 +105,31 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
         </div>
+        <section class="acesso-medicamentos">
+            <div class="container">
+                <div class="acesso-med-texto">
+                    <span class="acesso-med-etiqueta">SUA FARMÁCIA ORGANIZADA</span>
+                    <h2>Seus medicamentos em um só lugar</h2>
+                    <p>
+                        Consulte os medicamentos cadastrados, confira seus laboratórios,
+                        categorias e observações sempre que precisar.
+                    </p>
+                    <div class="acesso-med-acoes">
+                        <a href="listar_med.php" class="acesso-med-principal">
+                            Ver medicamentos →
+                        </a>
+                        <a href="cadastrar_med.php" class="acesso-med-secundario">
+                            Cadastrar medicamento
+                        </a>
+                    </div>
+                </div>
 
+                <div class="acesso-med-icone" aria-hidden="true">
+                    <span>✚</span>
+                    <p>Mais organização para cuidar da saúde</p>
+                </div>
+            </div>
+        </section>
         <div class="cta">
             <h2>Pronto para começar?</h2>
 
