@@ -29,13 +29,14 @@ body {
 
 /* HEADER */
 
-header {
+body>header,
+.header {
     width: 100%;
     background: white;
     border-bottom: 1px solid #ececec;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
 }
 
 .header {
@@ -495,71 +496,67 @@ footer>.container {
 /* RESPONSIVO */
 
 @media (max-width: 48rem) {
-
-    @media (max-width: 48rem) {
-
-        .container {
-            width: 100%;
-            padding-left: 5vw;
-            padding-right: 5vw;
-        }
-
-        .hero {
-            padding: 3rem 0;
-        }
-
-        .hero .container {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .texto p {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .imagem img {
-            max-width: 25rem;
-        }
-
-        .estatisticas .container {
-            flex-direction: column;
-        }
-
-        .cards {
-            grid-template-columns: 1fr;
-        }
-
-        .funcionalidades h2 {
-            font-size: 2rem;
-        }
-
-        .texto h2 {
-            font-size: 2.3rem;
-        }
-
-        .header .menu {
-            gap: 0.8rem;
-        }
+    .container {
+        width: 100%;
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
 
-    @media (max-width: 30rem) {
-        .header {
-            min-height: 4rem;
-        }
+    .hero {
+        padding: 3rem 0;
+    }
 
-        .header .menu a {
-            font-size: 0.9rem;
-        }
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
 
-        .btn-login {
-            padding: 0.6rem 0.9rem;
-        }
+    .texto p {
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        .login-container,
-        .cadastro-container {
-            padding: 1.5rem;
-        }
+    .imagem img {
+        max-width: 25rem;
+    }
+
+    .estatisticas .container {
+        flex-direction: column;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .funcionalidades h2 {
+        font-size: 2rem;
+    }
+
+    .texto h2 {
+        font-size: 2.3rem;
+    }
+
+    .header .menu {
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 30rem) {
+    .header {
+        min-height: 4rem;
+    }
+
+    .header .menu a {
+        font-size: 0.9rem;
+    }
+
+    .btn-login {
+        padding: 0.6rem 0.9rem;
+    }
+
+    .login-container,
+    .cadastro-container {
+        padding: 1.5rem;
     }
 }
 
@@ -1492,23 +1489,6 @@ footer>.container {
     line-height: 1.7;
 }
 
-.lista-med-voltar {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.lista-med-voltar a {
-    color: #555;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.lista-med-voltar a:hover {
-    color: #ef1835;
-    text-decoration: underline;
-}
-
 /* RESPONSIVIDADE DA LISTAGEM E DA SEÇÃO DE ACESSO
    Em telas médias, mostra dois cartões por linha; em celulares, coloca os
    cartões em uma coluna e empilha os botões e os elementos do resumo. */
@@ -1567,6 +1547,863 @@ footer>.container {
     }
 
     .lista-med-adicionar {
+        width: 100%;
+    }
+}
+
+/* Página de associação */
+.associacao-page {
+    min-height: 75vh;
+    background: #fafafa;
+    padding: 4rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.associacao-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2.5rem;
+    background: #fff;
+    border: 1px solid #ededf0;
+    border-radius: 1.25rem;
+    box-shadow: 0 0.6rem 1.8rem #0002;
+}
+
+.associacao-header {
+    margin-bottom: 2rem;
+}
+
+.associacao-etiqueta {
+    color: #ef1835;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.associacao-header h1 {
+    margin: 0.7rem 0;
+    color: #222;
+    font-size: 1.8rem;
+}
+
+.associacao-header p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.associacao-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.associacao-form label {
+    color: #333;
+    font-weight: 600;
+}
+
+.associacao-form select {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.7rem;
+    background: #fff;
+    color: #333;
+    font: inherit;
+}
+
+.associacao-form select:focus {
+    outline: none;
+    border-color: #ef1835;
+}
+
+.associacao-button {
+    padding: 0.95rem 1.2rem;
+    border: none;
+    border-radius: 0.7rem;
+    background: #ef1835;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.associacao-button:hover {
+    background: #d9142d;
+}
+
+.associacao-mensagem {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.7rem;
+    line-height: 1.5;
+}
+
+.associacao-mensagem.sucesso {
+    background: #e8f7ed;
+    color: #216b39;
+}
+
+.associacao-mensagem.erro {
+    background: #fdebed;
+    color: #a51d2d;
+}
+
+.associacao-vazio {
+    padding: 1rem;
+    border-radius: 0.7rem;
+    background: #f5f5f5;
+    color: #666;
+    line-height: 1.5;
+}
+
+.associacao-voltar {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #ef1835;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.associacao-voltar:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .associacao-page {
+        padding: 2rem 1rem;
+    }
+
+    .associacao-container {
+        padding: 1.5rem;
+    }
+
+    .associacao-header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Lista de pessoas associadas */
+.associacao-lista {
+    margin-bottom: 2.5rem;
+}
+
+.associacao-lista h2,
+.associacao-nova h2 {
+    margin-bottom: 1rem;
+    color: #222;
+    font-size: 1.2rem;
+}
+
+.associacao-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ededf0;
+    border-radius: 0.8rem;
+    background: #fff;
+}
+
+.associacao-item-icone {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fdebed;
+    color: #ef1835;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.associacao-item-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.associacao-item-info strong {
+    color: #333;
+}
+
+.associacao-item-info span {
+    color: #777;
+    font-size: 0.85rem;
+    overflow-wrap: anywhere;
+}
+
+.associacao-status {
+    margin-left: auto;
+    padding: 0.4rem 0.6rem;
+    border-radius: 2rem;
+    background: #e8f7ed;
+    color: #216b39;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.associacao-nova {
+    padding-top: 1.8rem;
+    border-top: 1px solid #ededf0;
+}
+
+.associacao-nova>p {
+    margin-bottom: 1.2rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .associacao-item {
+        flex-wrap: wrap;
+    }
+
+    .associacao-status {
+        margin-left: 3.5rem;
+    }
+}
+
+/* ========================================
+   SELEÇÃO E PRESCRIÇÃO DE MEDICAMENTOS
+======================================== */
+
+.prescricao-page,
+.meus-med-page {
+    min-height: 75vh;
+    padding: 3.5rem 1.25rem;
+    background: #fafafa;
+}
+
+.prescricao-container,
+.meus-med-container {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border: 1px solid #ededf0;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 0.6rem 1.8rem #0001;
+}
+
+.prescricao-header,
+.meus-med-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.prescricao-etiqueta {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    color: #ef1835;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.prescricao-header h1,
+.meus-med-header h1 {
+    margin-bottom: 0.7rem;
+    color: #222;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.meus-med-header h1 span {
+    color: #ef1835;
+}
+
+.prescricao-header p,
+.meus-med-header p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.prescricao-medicamento {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding: 1.2rem;
+    border: 1px solid #ededf0;
+    border-radius: 0.9rem;
+    background: #fafafa;
+}
+
+.prescricao-medicamento img,
+.prescricao-sem-foto {
+    width: 6rem;
+    height: 6rem;
+    flex-shrink: 0;
+    border-radius: 0.7rem;
+    object-fit: cover;
+}
+
+.prescricao-sem-foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff0f2;
+    color: #ef1835;
+    font-size: 2.5rem;
+}
+
+.prescricao-medicamento span {
+    color: #ef1835;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.prescricao-medicamento h2 {
+    margin: 0.35rem 0;
+    color: #25252b;
+    font-size: 1.2rem;
+}
+
+.prescricao-medicamento p {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.prescricao-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.prescricao-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.prescricao-campo label {
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.prescricao-campo label span,
+.prescricao-campo small {
+    color: #777;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.prescricao-campo input,
+.prescricao-campo select,
+.prescricao-campo textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 0.6rem;
+    background: #fff;
+    color: #333;
+    font: inherit;
+    font-size: 0.9rem;
+}
+
+.prescricao-campo input:focus,
+.prescricao-campo select:focus,
+.prescricao-campo textarea:focus {
+    outline: none;
+    border-color: #ef1835;
+    box-shadow: 0 0 0 3px rgba(239, 24, 53, 0.1);
+}
+
+.prescricao-campo textarea {
+    resize: vertical;
+}
+
+.prescricao-horario-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+}
+
+.prescricao-horario-item label {
+    min-width: 6rem;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.prescricao-horario-item input {
+    max-width: 15rem;
+}
+
+.prescricao-botao {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.95rem 1.2rem;
+    border: none;
+    border-radius: 0.6rem;
+    background: #ef1835;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.prescricao-botao:hover {
+    background: #d9142d;
+}
+
+.prescricao-voltar {
+    display: block;
+    margin-top: 1.5rem;
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.prescricao-voltar:hover {
+    color: #ef1835;
+}
+
+.prescricao-mensagem {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.7rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.prescricao-mensagem.sucesso {
+    background: #e8f7ed;
+    color: #216b39;
+}
+
+.prescricao-mensagem.erro {
+    background: #fdebed;
+    color: #a51d2d;
+}
+
+/* ========================================
+   MEUS MEDICAMENTOS
+======================================== */
+
+.meus-med-resumo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid #ededf0;
+    border-radius: 0.8rem;
+    background: #fafafa;
+}
+
+.meus-med-resumo strong {
+    color: #ef1835;
+    font-size: 1.6rem;
+}
+
+.meus-med-resumo span {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.meus-med-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.meus-med-card {
+    padding: 1.3rem;
+    border: 1px solid #ededf0;
+    border-radius: 0.9rem;
+    background: #fff;
+}
+
+.meus-med-conteudo {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.3rem;
+}
+
+.meus-med-conteudo>img,
+.meus-med-sem-foto {
+    width: 7rem;
+    height: 7rem;
+    flex-shrink: 0;
+    border-radius: 0.7rem;
+    object-fit: cover;
+}
+
+.meus-med-sem-foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff0f2;
+    color: #ef1835;
+    font-size: 2.5rem;
+}
+
+.meus-med-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.meus-med-categoria {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 2rem;
+    background: #fff0f2;
+    color: #d9142d;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.meus-med-info h2 {
+    margin-bottom: 0.9rem;
+    color: #25252b;
+    font-size: 1.2rem;
+}
+
+.meus-med-info>p {
+    margin-top: 0.55rem;
+    color: #555;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.meus-med-info>p strong,
+.meus-med-observacao strong {
+    color: #333;
+}
+
+.meus-med-observacao {
+    margin-top: 1rem;
+    padding: 0.9rem;
+    border-radius: 0.6rem;
+    background: #fafafa;
+    color: #555;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.meus-med-observacao p {
+    margin-top: 0.4rem;
+    overflow-wrap: anywhere;
+}
+
+.meus-med-vazio {
+    padding: 3rem 1.5rem;
+    border: 1px solid #ededf0;
+    border-radius: 1rem;
+    background: #fafafa;
+    text-align: center;
+}
+
+.meus-med-vazio>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto 1.2rem;
+    border-radius: 1rem;
+    background: #fff0f2;
+    color: #ef1835;
+    font-size: 2.5rem;
+}
+
+.meus-med-vazio h2 {
+    margin-bottom: 0.7rem;
+    color: #25252b;
+    font-size: 1.3rem;
+}
+
+.meus-med-vazio p {
+    max-width: 30rem;
+    margin: 0 auto 1.3rem;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.meus-med-vazio .prescricao-botao {
+    max-width: 18rem;
+}
+
+.meus-med-acoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin-top: 2rem;
+}
+
+.meus-med-acoes a {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.meus-med-acoes a:hover {
+    color: #ef1835;
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 40rem) {
+
+    .prescricao-page,
+    .meus-med-page {
+        padding: 2rem 0.85rem;
+    }
+
+    .prescricao-container,
+    .meus-med-container {
+        padding: 1.4rem 1rem;
+    }
+
+    .prescricao-medicamento {
+        align-items: flex-start;
+        gap: 0.9rem;
+        padding: 0.9rem;
+    }
+
+    .prescricao-medicamento img,
+    .prescricao-sem-foto {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .meus-med-conteudo {
+        flex-direction: column;
+    }
+
+    .meus-med-conteudo>img,
+    .meus-med-sem-foto {
+        width: 100%;
+        height: 11rem;
+    }
+
+    .prescricao-horario-item label {
+        min-width: 5rem;
+    }
+}
+
+.lista-med-voltar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.lista-med-voltar a {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.lista-med-voltar a:hover {
+    color: #ef1835;
+    text-decoration: underline;
+}
+
+/* AJUSTE DO CABEÇALHO E CONTEÚDO DA LISTAGEM */
+
+.lista-med-page {
+    position: relative;
+    width: 100%;
+    min-height: 75vh;
+    padding: 3rem 1.25rem 4rem;
+    background: #fafafa;
+}
+
+.lista-med-header {
+    position: static;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: center;
+}
+
+.lista-med-header h1 {
+    margin-bottom: 0.75rem;
+    color: #222;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.lista-med-header h1 span {
+    color: #ef1835;
+}
+
+.lista-med-header>p {
+    max-width: 36rem;
+    margin: 0 auto;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 40rem) {
+    .lista-med-page {
+        padding: 2rem 0.85rem 3rem;
+    }
+
+    .lista-med-header {
+        margin-bottom: 1.75rem;
+    }
+
+    .lista-med-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* REGISTRO DAS DOSES EM MEUS MEDICAMENTOS */
+
+.meus-med-doses {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #ededf0;
+}
+
+.meus-med-doses h3 {
+    margin-bottom: 1rem;
+    color: #25252b;
+    font-size: 1rem;
+}
+
+.meus-med-dose {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.8rem;
+    padding: 1rem;
+    border: 1px solid #ededf0;
+    border-radius: 0.7rem;
+    background: #fafafa;
+}
+
+.meus-med-dose-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.meus-med-dose-info strong {
+    color: #25252b;
+    font-size: 1.1rem;
+}
+
+.meus-med-status {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.meus-med-status.pendente {
+    color: #a16b00;
+}
+
+.meus-med-status.tomada {
+    color: #218838;
+}
+
+.meus-med-status.nao_tomada {
+    color: #d9142d;
+}
+
+.meus-med-dose-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.meus-med-btn {
+    padding: 0.65rem 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.meus-med-btn:hover {
+    transform: translateY(-1px);
+}
+
+.meus-med-btn.tomou {
+    background: #e8f7ed;
+    color: #216b39;
+    border-color: #c8e8d0;
+}
+
+.meus-med-btn.tomou:hover,
+.meus-med-btn.tomou.ativo {
+    background: #218838;
+    color: #fff;
+    border-color: #218838;
+}
+
+.meus-med-btn.nao-tomou {
+    background: #fdebed;
+    color: #a51d2d;
+    border-color: #f5c8ce;
+}
+
+.meus-med-btn.nao-tomou:hover,
+.meus-med-btn.nao-tomou.ativo {
+    background: #d9142d;
+    color: #fff;
+    border-color: #d9142d;
+}
+
+.meus-med-sem-dose {
+    color: #777;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 40rem) {
+    .meus-med-dose {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .meus-med-dose-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .meus-med-btn {
         width: 100%;
     }
 }

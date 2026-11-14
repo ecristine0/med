@@ -7,6 +7,11 @@ require_once __DIR__ . "/conexao.php";
 
 $conexao->set_charset("utf8mb4");
 
+$logado = isset($_SESSION['pessoa_id']);
+
+// Caminho da pasta de fotos
+$pastaFotos = __DIR__ . "/foto/";
+
 $sql = "SELECT
             medicamento_id,
             medicamento_nome,
@@ -50,10 +55,10 @@ function escapar($valor)
 
             <header class="lista-med-header">
                 <span class="lista-med-etiqueta">MEDTIME</span>
-                <h1>Medicamentos <span>cadastrados</span></h1>
+                <h1>Catálogo de <span>medicamentos</span></h1>
                 <p>
-                    Consulte os medicamentos registrados no sistema
-                    e confira suas principais informações.
+                    Consulte os medicamentos disponíveis no sistema
+                    e selecione aqueles que deseja adicionar à sua rotina.
                 </p>
             </header>
 
@@ -63,13 +68,9 @@ function escapar($valor)
                         <?= $total ?>
                     </span>
                     <span class="lista-med-resumo-texto">
-                        <?= $total === 1 ? "medicamento cadastrado" : "medicamentos cadastrados" ?>
+                        <?= $total === 1 ? "medicamento disponível" : "medicamentos disponíveis" ?>
                     </span>
                 </div>
-
-                <a href="cadastrar_med.php" class="lista-med-adicionar">
-                    + Cadastrar medicamento
-                </a>
             </div>
 
             <?php if ($total > 0): ?>
@@ -78,20 +79,45 @@ function escapar($valor)
 
                     <?php while ($medicamento = $resultado->fetch_assoc()): ?>
 
+                        <?php
+                        $nomeFoto = basename(trim((string)$medicamento["medicamento_foto"]));
+
+                        $caminhoFoto = "";
+
+                        if ($nomeFoto !== "") {
+                            $caminhoFoto = "foto/" . implode(
+                                "/",
+                                array_map("rawurlencode", explode("/", $nomeFoto))
+                            );
+                        }
+                        ?>
+
                         <article class="lista-med-card">
 
-                            <?php if (!empty($medicamento["medicamento_foto"])): ?>
+                            <?php if ($nomeFoto !== ""): ?>
+
                                 <div class="lista-med-imagem">
+
                                     <img
-                                        src="<?= escapar($medicamento["medicamento_foto"]) ?>"
+                                        src="<?= escapar($caminhoFoto) ?>"
                                         alt="Foto de <?= escapar($medicamento["medicamento_nome"]) ?>"
-                                        loading="lazy">
+                                        loading="lazy"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                                    <div class="lista-med-sem-imagem" style="display:none;">
+                                        <span>✚</span>
+                                        <p>Imagem não encontrada</p>
+                                    </div>
+
                                 </div>
+
                             <?php else: ?>
+
                                 <div class="lista-med-sem-imagem">
                                     <span>✚</span>
                                     <p>Sem foto cadastrada</p>
                                 </div>
+
                             <?php endif; ?>
 
                             <div class="lista-med-card-conteudo">
@@ -120,6 +146,14 @@ function escapar($valor)
                                     </p>
                                 </div>
 
+                                <a
+                                    href="<?= $logado
+                                                ? 'selecionar_med.php?id=' . (int)$medicamento['medicamento_id']
+                                                : 'login.php' ?>"
+                                    class="lista-med-adicionar">
+                                    <?= $logado ? 'Selecionar medicamento' : 'Entre para selecionar' ?>
+                                </a>
+
                             </div>
                         </article>
 
@@ -133,18 +167,19 @@ function escapar($valor)
                     <div class="lista-med-vazio-icone">✚</div>
                     <h2>Nenhum medicamento encontrado</h2>
                     <p>
-                        Você ainda não possui medicamentos cadastrados.
-                        Comece adicionando o primeiro ao sistema.
+                        Ainda não existem medicamentos disponíveis no catálogo.
+                        Entre em contato com o administrador do sistema.
                     </p>
-                    <a href="cadastrar_med.php" class="lista-med-adicionar">
-                        Cadastrar primeiro medicamento
-                    </a>
                 </section>
 
             <?php endif; ?>
 
             <div class="lista-med-voltar">
                 <a href="index.php">← Voltar para o início</a>
+
+                <?php if ($logado): ?>
+                    <a href="meus_medicamentos.php">Ver meus medicamentos →</a>
+                <?php endif; ?>
             </div>
 
         </div>

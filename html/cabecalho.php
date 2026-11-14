@@ -1,5 +1,9 @@
 <?php
-$logado = isset($_SESSION['pessoa']);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$logado = isset($_SESSION['pessoa_id']);
 ?>
 
 <header class="header">

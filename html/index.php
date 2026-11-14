@@ -2,6 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+$logado = isset($_SESSION['pessoa_id']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -16,6 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
 
     <?php require_once "cabecalho.php"; ?>
+
     <main>
         <div class="hero">
             <div class="container">
@@ -31,7 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         O MedTime ajuda você a manter o controle da sua medicação,
                         garantindo que cada dose seja tomada no momento certo.
                     </p>
-                    <a href="cadastrar_med.php" class="hero-button">Começar Agora →</a>
+                    <a href="listar_med.php" class="hero-button">Explorar medicamentos →</a>
                 </div>
 
                 <div class="imagem">
@@ -105,22 +108,35 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
         </div>
+
         <section class="acesso-medicamentos">
             <div class="container">
                 <div class="acesso-med-texto">
                     <span class="acesso-med-etiqueta">SUA FARMÁCIA ORGANIZADA</span>
                     <h2>Seus medicamentos em um só lugar</h2>
                     <p>
-                        Consulte os medicamentos cadastrados, confira seus laboratórios,
-                        categorias e observações sempre que precisar.
+                        Consulte os medicamentos disponíveis no sistema,
+                        confira suas informações e selecione aqueles que deseja utilizar.
                     </p>
+
                     <div class="acesso-med-acoes">
                         <a href="listar_med.php" class="acesso-med-principal">
                             Ver medicamentos →
                         </a>
-                        <a href="cadastrar_med.php" class="acesso-med-secundario">
-                            Cadastrar medicamento
-                        </a>
+
+                        <?php if ($logado): ?>
+                            <a href="meus_medicamentos.php" class="acesso-med-secundario">
+                                Meus Medicamentos
+                            </a>
+
+                            <a href="cadastrar_cuidado.php" class="acesso-med-secundario">
+                                Associar cuidador ou paciente
+                            </a>
+                        <?php else: ?>
+                            <a href="login.php" class="acesso-med-secundario">
+                                Entrar na minha conta
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -130,6 +146,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
         </section>
+
         <div class="cta">
             <h2>Pronto para começar?</h2>
 
@@ -138,7 +155,9 @@ if (session_status() === PHP_SESSION_NONE) {
             </p>
 
             <button>
-                <a href="login.php">Cadastre</a>
+                <a href="<?= $logado ? 'listar_med.php' : 'login.php' ?>">
+                    <?= $logado ? 'Ver medicamentos' : 'Acessar minha conta' ?>
+                </a>
             </button>
         </div>
 

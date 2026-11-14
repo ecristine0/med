@@ -142,20 +142,21 @@ $stmt->bind_param(
 );
 
 
+
 if ($stmt->execute()) {
     $id = $conexao->insert_id;
     $stmt->close();
 
     session_regenerate_id(true);
 
-    $_SESSION["id"] = $id;
-    $_SESSION["pessoa"] = $nome;
-    $_SESSION["email"] = $email;
-    $_SESSION["tipo"] = $tipo;
+    $_SESSION['pessoa_id'] = $id;
+    $_SESSION['pessoa_nome'] = $nome;
+    $_SESSION['pessoa_tipo'] = $tipo;
 
     header("Location: index.php");
     exit;
 }
+
 
 if ($stmt->errno === 1062) {
     $stmt->close();

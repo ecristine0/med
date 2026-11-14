@@ -1,3 +1,4 @@
+<?php require_once "cabecalho.php"; ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -10,7 +11,6 @@
 
 <body>
 
-    <?php require_once "cabecalho.php"; ?>
 
     <main class="sobre-page">
         <section class="sobre-container">
